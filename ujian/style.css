@@ -1,0 +1,83 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f5f9;
+    min-height: 100px;
+    padding: 20px;
+}
+
+.card, form, body > div {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    text-align: center;
+    color: #2563eb;
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.rr {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #2563eb;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    background-color: #2563eb;
+    padding: 12px;
+    text-align: center;
+    border-radius: 6px;
+}
