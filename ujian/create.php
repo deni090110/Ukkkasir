@@ -1,36 +1,51 @@
-<?
+<?php
 include("koneksi.php");
 
-if(isset($_POST['daftar'])){
+if (isset($_POST['daftar'])) {
     $username = $_POST['username'];
-    $pasword = $_POST['pasword'];
-     mysqli_query($db, "INSERT INTO user VALUES(NULL, '$username','$pasword')");
-    header("Location: update.php");
+    $password = $_POST['pasword']; 
+
+    $stmt = $db->prepare("INSERT INTO user (username, pasword) VALUES (?, ?)");
+    $stmt->bind_param("ss", $username, $password);
+
+    if ($stmt->execute()) {
+        header("Location: update.php");
+        exit;
+    } else {
+        echo "Pendaftaran gagal: " . $stmt->error;
+    }
+
+    $stmt->close();
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-
+    <title>Daftar Akun</title>
+    <link rel="stylesheet" href="style.css?v=<?= time(); ?>">
 </head>
+
 <body>
+
     <form method="post">
-        <h1>buat akun mu</h1>
+        <h1>Buat Akunmu</h1>
+
         <div>
-            <label>username:</label>
-            <input type="text" username="username" required>
+            <label>Username:</label>
+            <input type="text" name="username" required>
         </div>
+
         <div>
-            <label>pasword:</label>
-            <input type="text" name="pasword" required>
+            <label>Password:</label>
+            <input type="password" name="pasword" required>
         </div>
-         <button type="submit" name="daftar" href="update.php">daftar</button>
+
+        <button type="submit" name="daftar">Daftar</button>
     </form>
-    
+
 </body>
 </html>
